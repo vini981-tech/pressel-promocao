@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Fake reCAPTCHA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .captcha-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #d3d3d3;
+      border-radius: 6px;
+      background: white;
+      padding: 25px 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: background 0.2s;
+      max-width: 90%;
+      width: 420px;
+    }
+
+    .captcha-box:hover {
+      background: #f9f9f9;
+    }
+
+    .captcha-checkbox {
+      width: 34px;
+      height: 34px;
+      border: 2px solid #999;
+      border-radius: 4px;
+      margin-right: 20px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .captcha-checkbox.checked::after {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 4px;
+      width: 10px;
+      height: 18px;
+      border: solid #2e7d32;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+    }
+
+    .captcha-text {
+      font-size: 20px;
+      color: #333;
+    }
+
+    .captcha-logo {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+    }
+
+    .captcha-logo img {
+      width: 40px;
+      margin-bottom: 4px;
+    }
+
+    .captcha-logo a {
+      color: #888;
+      text-decoration: none;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="captcha-box" onclick="handleClick()">
+  <div id="checkbox" class="captcha-checkbox"></div>
+  <div class="captcha-text">I'm not a robot</div>
+  <div class="captcha-logo">
+    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA">
+    <div>reCAPTCHA</div>
+    <div><a href="#">Privacy</a> - <a href="#">Terms</a></div>
+  </div>
+</div>
+
+<script>
+  function handleClick() {
+    const box = document.getElementById("checkbox");
+    box.classList.add("checked");
+    setTimeout(function() {
+      window.location.href = "https://example.com";
+    }, 500);  // Delay for checkbox animation
+  }
+</script>
+
+</body>
+</html>
